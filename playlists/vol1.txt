@@ -1,0 +1,2 @@
+# vol1 — add URLs (YouTube/SoundCloud) one per line
+# tip: paste whole SC/YouTube playlist links too

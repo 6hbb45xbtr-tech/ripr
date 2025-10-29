@@ -1,6 +1,3 @@
-# ripr
-riprwuick
-[README.md](https://github.com/user-attachments/files/23207395/README.md)
 
 # DO ALL FOR YOU — Batch Ripper (CJ)
 
