@@ -28,5 +28,21 @@ This is the **works-first** seed: paste a URL, get an MP3 (yt-dlp + ffmpeg), dow
 - ffmpeg is installed by Render via `apt.txt`. If health says `(no ffmpeg)`, check your build logs and ensure `apt.txt` is picked up.
 - Keep it simple for now — no DB. Files are stored under `backend/store/` on the Render instance.
 - Free plans may sleep; first request can take a moment.
+ - Free plans may sleep; first request can take a moment.
+
+API notes
+- The `POST /batch_from_playlists` endpoint accepts a JSON object with an optional `volumes` field. Example body:
+
+```json
+{"volumes": ["vol1", "vol7"]}
+```
+
+If `volumes` is omitted, the server will try `vol1`..`vol10`. If no valid URLs are found in the requested playlists the endpoint returns a 400 with a helpful message.
 
 PLUR — CJ 2025
+
+yt-dlp fallback
+- The server prefers the `yt-dlp` console script. If that binary is not available it will fall back to running `yt-dlp` as a Python module via `python -m yt_dlp` (this is useful on platforms where the console script isn't installed).
+- You can ensure the module is available by adding `yt-dlp` to `backend/requirements.txt` (already present) or running `pip install yt-dlp` in your environment.
+- The `/health` endpoint reports two flags: `yt_dlp_binary` (console script present) and `yt_dlp_module` (python module importable). If either is true, ripping should be possible (assuming `ffmpeg` is also present for audio conversion).
+

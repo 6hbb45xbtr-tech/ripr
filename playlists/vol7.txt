@@ -1,1 +1,11 @@
 # vol7 — add URLs one per line
+#
+# Put one fully-qualified http(s) URL per line. Lines beginning with `#` are ignored.
+# Example (replace with real URLs you have permission to rip):
+# https://example.com/some-audio-or-video
+#
+# If you want a quick test, add a single public URL here. The server will skip empty
+# volumes and return a helpful message if no valid URLs are found.
+
+# Placeholder example (not a downloadable media file):
+http://example.com/
